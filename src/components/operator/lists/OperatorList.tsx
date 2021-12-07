@@ -8,7 +8,10 @@ const OperatorList = () => {
 
             {
                 //Generates the list of operators
-                operators.map((curr_op) => <OperatorContainer props={curr_op} />)
+                operators.map((curr_op) => <OperatorContainer 
+                id={curr_op.id} 
+                op_name={curr_op.op_name}
+                img_url={curr_op.img_url}/>)
             }
 
         </BoxStyled>

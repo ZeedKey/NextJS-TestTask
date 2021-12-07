@@ -4,8 +4,11 @@ import { useEffect, useState } from 'react';
 import {phoneSchema,moneySchema} from '../../validations/PaymentValidation';
 import { Button } from '@mui/material';
 
-const InputList = (props) => {
-    const {opName} = props;
+interface IInList {
+    opName: string
+}
+
+const InputList = ( {opName}: IInList ) => {
 
     const [isPhoneValid, setPhoneValid] = useState(false);
     const [isMoneyValid, setMoneyValid] = useState(false);

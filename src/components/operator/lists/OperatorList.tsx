@@ -1,24 +1,23 @@
 import operators from '../storage/OperatorStorage'
 import OperatorContainer from '../containers/OperatorContainer'
-import Box from '@mui/material/Box'
+import styled from 'styled-components'
 
 const OperatorList = () => {
     return (
-        <Box sx={BoxStyle}>
+        <BoxStyled>
 
             {
                 //Generates the list of operators
                 operators.map((curr_op) => <OperatorContainer props={curr_op} />)
             }
 
-        </Box>
-
+        </BoxStyled>
     )
 }
-const BoxStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexWrap: 'wrap'
-}
+const BoxStyled = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+`
 export default OperatorList

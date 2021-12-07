@@ -3,18 +3,21 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import PayButton from '../buttons/PayButton'
 
-//Contains
+interface IOpCont{
+    id: number
+    op_name: string
+    img_url: string
+}
 
-const OperatorContainer = ( {props} ) => {
-    const { id , op_name, img_url } = props;
+const OperatorContainer = ( { id , op_name, img_url } : IOpCont ) => {
     return (
         <Container elevation={3}>
-            <Box sx={boxStyle}>
+            <BoxStyled>
                 <Title>{op_name}</Title>
 
                 <Image src={img_url}/>
                 <PayButton id={id}/>
-            </Box>
+            </BoxStyled>
         </Container>
     )
 }
@@ -30,12 +33,12 @@ height: 4vmax;
 const Title = styled.h4`
 border-bottom: 1px dotted black;
 `;
-const boxStyle = {
-    margin:2,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center'
-}
+const BoxStyled = styled(Box)`
+margin:2;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`;
 
 export default OperatorContainer

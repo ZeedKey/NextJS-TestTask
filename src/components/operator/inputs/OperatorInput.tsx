@@ -1,7 +1,18 @@
 import InputMask from 'react-input-mask'
 import { FormControl,InputAdornment,Input,FormHelperText } from '@mui/material'
 
-export default function OperatorInput(props) {
+
+interface IProps {
+  placeholder: string
+  mask?: string
+  error?: boolean
+  isDisabled?: boolean
+  value?: string
+  postfix?: string
+  onChange?: any
+}
+
+export default function OperatorInput(props : IProps) {
     return(
       <InputMask mask={props.mask} maskChar="*">
 

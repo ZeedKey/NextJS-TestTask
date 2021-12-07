@@ -4,8 +4,6 @@ import operators from '../../components/operator/storage/OperatorStorage';
 import OperatorForm from '../../components/operator/forms/OperatorForm';
 import Footer from '../../components/footer/Footer';
 
-//Contais
-
 const Payment = () => {
     const router = useRouter();
 

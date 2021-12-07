@@ -5,8 +5,11 @@ import Paper from '@mui/material/Paper'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
-const OperatorForm = (props) => {
-    const { opName } = props;
+interface IOpForm{
+    opName: string
+}
+
+const OperatorForm = ({opName} : IOpForm) => {
     const [isActive, setActive] = useState("none");
     const router = useRouter();
 

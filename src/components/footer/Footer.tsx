@@ -24,7 +24,7 @@ const Footer = () => {
     return (
         <FooterStyled>
             BraveDevelopers
-            <StyledLink href="https://github.com/ZeedKey">Volokh "ZeedKey" Yaroslav</StyledLink>
+            <StyledLink href="https://github.com/ZeedKey">Volokh -ZeedKey- Yaroslav</StyledLink>
         </FooterStyled>
     )
 }

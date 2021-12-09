@@ -1,8 +1,16 @@
 import OperatorInput from '../inputs/OperatorInput'
 import styled from 'styled-components'
-import { useEffect, useState } from 'react';
-import {phoneSchema,moneySchema} from '../../validations/PaymentValidation';
-import { Button } from '@mui/material';
+import { useEffect, useState, ChangeEvent} from 'react';
+import {phoneSchema,moneySchema} from '../../validations/PaymentValidation'
+import { Button } from '@mui/material'
+
+const InputBlock = styled.div`
+width: 10vmax;
+display: flex;
+flex-direction: column;
+justify-content:center;
+align-items:center;
+`
 
 interface IInList {
     opName: string
@@ -13,22 +21,22 @@ const InputList = ( {opName}: IInList ) => {
     const [isPhoneValid, setPhoneValid] = useState(false);
     const [isMoneyValid, setMoneyValid] = useState(false);
     const [isAllValid, setAllValid] = useState(false);
+
+
     const changeAllValid = () => (isPhoneValid == true && isMoneyValid==true) ? setAllValid(true) : setAllValid(false);
 
     useEffect(() => {
         changeAllValid();
     });
 
-    const changePhoneHandler = async (e) => {
-        e.preventDefault();
+    const changePhoneHandler = async (e: ChangeEvent<HTMLInputElement>) => {
         const phoneNum = e.target.value;
         const isValid = await phoneSchema.isValid( {phoneNum} );
         
         isValid ? setPhoneValid(true) : setPhoneValid(false);
     }
 
-    const changeMoneyHandler = async (e) => {
-        e.preventDefault();
+    const changeMoneyHandler = async (e: ChangeEvent<HTMLInputElement>) => {
         const money = e.target.value;
         const isValid = await moneySchema.isValid({money});
 
@@ -63,13 +71,5 @@ const InputList = ( {opName}: IInList ) => {
         </InputBlock>
     )
 }
-
-const InputBlock = styled.div`
-width: 10vmax;
-display: flex;
-flex-direction: column;
-justify-content:center;
-align-items:center;
-`
 
 export default InputList

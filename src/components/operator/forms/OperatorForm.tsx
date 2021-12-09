@@ -5,35 +5,6 @@ import Paper from '@mui/material/Paper'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
-interface IOpForm{
-    opName: string
-}
-
-const OperatorForm = ({opName} : IOpForm) => {
-    const [isActive, setActive] = useState("none");
-    const router = useRouter();
-
-    const Alarm = styled(Paper)`
-    display: ${isActive};
-    opacity:50%;
-    color: red;
-    margin:1em;
-    padding:0.5em;
-    `
-    const submitHandler = (e) => {
-        e.preventDefault();
-        (Math.random() * 100 > 50) ? setActive("inline-block") : router.push("/");
-    }
-
-    return (
-        <Container>
-            <Form onSubmit={submitHandler}>
-                <InputList opName={opName} />
-                <Alarm elevation={2}>Oops! Something went wrong!</Alarm>
-            </Form>
-        </Container >
-    )
-}
 const Container = styled(Box)`
 display: flex;
 justify-content: center;
@@ -43,7 +14,6 @@ margin:3em;
     margin:1em;
 }
 `
-
 const Form = styled.form`
 width: 30vmax;
 height: 30vmax;
@@ -59,4 +29,34 @@ box-shadow: 1px 1px 5px grey;
     height: 100%;
   }
 `
+const Alarm = styled(Paper)`
+opacity:50%;
+color:red;
+margin:1em;
+padding:0.5em;
+`
+
+interface IOpForm{
+    opName: string
+}
+
+const OperatorForm = ({opName} : IOpForm) => {
+    const [display, setDisplay] = useState("none");
+    const router = useRouter();
+
+    const submitHandler = (e : React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        (Math.random() * 100 > 50) ? setDisplay("inline-block") : router.push("/");
+    }
+
+    return (
+        <Container>
+            <Form onSubmit={submitHandler}>
+                <InputList opName={opName} />
+                <Alarm sx={{display:display}} elevation={2}>Oops! Something went wrong!</Alarm>
+            </Form>
+        </Container >
+    )
+}
+
 export default OperatorForm

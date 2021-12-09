@@ -1,20 +1,21 @@
 import InputMask from 'react-input-mask'
 import { FormControl,InputAdornment,Input,FormHelperText } from '@mui/material'
-
+import React, { ChangeEventHandler } from 'react'
 
 interface IProps {
   placeholder: string
-  mask?: string
-  error?: boolean
+  mask?      : string
+  error?     : boolean
   isDisabled?: boolean
-  value?: string
-  postfix?: string
-  onChange?: any
+  value?     : string
+  postfix?   : string
+  onChange?  : ChangeEventHandler<HTMLInputElement>
 }
 
 export default function OperatorInput(props : IProps) {
+  const mask = (props.mask===undefined) ? "" : props.mask;
     return(
-      <InputMask mask={props.mask} maskChar="*">
+      <InputMask mask={mask}>
 
         <FormControl variant="standard" sx={{ m: 1, mt: 3, width: '25ch' }}>
           <Input

@@ -1,6 +1,5 @@
 // DESCRIPTION : 
 // This file is destined to be a storage for all operators.
-// If you want to add or delete the operator, so here you go!
 
 const operators_list = [  
     {

@@ -1,14 +1,5 @@
 import styled from 'styled-components'
-import { Box, Link } from '@mui/material'
-
-const Footer = () => {
-    return (
-        <FooterStyled>
-            BraveDevelopers
-            <StyledLink href="https://github.com/ZeedKey">Volokh "ZeedKey" Yaroslav</StyledLink>
-        </FooterStyled>
-    )
-}
+import { Link } from '@mui/material'
 
 const StyledLink = styled(Link)`
 margin:0.2em;
@@ -28,5 +19,14 @@ bottom: 0;
 height: 60px;
 width: 100%;
 `;
+
+const Footer = () => {
+    return (
+        <FooterStyled>
+            BraveDevelopers
+            <StyledLink href="https://github.com/ZeedKey">Volokh "ZeedKey" Yaroslav</StyledLink>
+        </FooterStyled>
+    )
+}
 
 export default Footer

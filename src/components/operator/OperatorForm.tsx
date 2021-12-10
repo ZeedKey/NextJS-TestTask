@@ -1,4 +1,4 @@
-import InputList from '../lists/InputList'
+import InputList from './lists/InputList'
 import styled from 'styled-components'
 import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'

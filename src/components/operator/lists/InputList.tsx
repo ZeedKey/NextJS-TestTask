@@ -1,7 +1,7 @@
-import OperatorInput from '../inputs/OperatorInput'
+import OperatorInput from '../OperatorInput'
 import styled from 'styled-components'
 import { useEffect, useState, ChangeEvent} from 'react';
-import {phoneSchema,moneySchema} from '../../validations/PaymentValidation'
+import {phoneSchema,moneySchema} from '../../PaymentValidation'
 import { Button } from '@mui/material'
 
 const InputBlock = styled.div`

@@ -1,5 +1,5 @@
 import OperatorList from '../operator/lists/OperatorList'
-import Footer from '../footer/Footer'
+import Footer from '../Footer'
 
 const MainLayout = () => {
 

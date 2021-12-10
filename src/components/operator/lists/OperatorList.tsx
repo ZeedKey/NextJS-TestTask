@@ -1,5 +1,5 @@
-import operators from '../storage/OperatorStorage'
-import OperatorContainer from '../containers/OperatorContainer'
+import operators from '../OperatorStorage'
+import OperatorContainer from '../OperatorContainer'
 import styled from 'styled-components'
 
 const BoxStyled = styled.div`

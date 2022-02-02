@@ -28,7 +28,7 @@ const Home: NextPage = () => {
   const router = useRouter();
   const doChangeOpName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setOpName(e.target.value);
-    e.target.value.trim().length > 0 && !e.target.value.trim().match(/[\W]/gm)
+    e.target.value.trim().length > 0 && !e.target.value.trim().match(/[^a-zA-Z0-9_а-яёА-ЯЁ]/gm)
       ? setDisabled(false)
       : setDisabled(true);
   };

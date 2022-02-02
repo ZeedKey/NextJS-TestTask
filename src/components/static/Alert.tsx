@@ -3,14 +3,10 @@ import styled from "styled-components";
 interface IAlertProps {
   status: string;
   disabled: boolean;
+  text: string;
 }
 
 function Alert(props: IAlertProps) {
-  const alertText =
-    props.status === "success"
-      ? "Успешно!"
-      : "Проверьте правильность указанных данных";
-
   const Container = styled.div`
     visibility: ${props.disabled ? "hidden" : "visible"};
     border-radius: 2px;
@@ -22,7 +18,7 @@ function Alert(props: IAlertProps) {
     border: 1px solid ${props.status === "success" ? "green" : "red"};
   `;
 
-  return <Container>{alertText}</Container>;
+  return <Container>{props.text}</Container>;
 }
 
 export { Alert };

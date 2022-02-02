@@ -42,12 +42,14 @@ const OperatorForm = (props: IFormProps) => {
     phone: "",
     money: "",
   });
-  const [isDisabled, setIsDisabled] = useState<boolean>(true);
+  const [isAlertDisabled, setAlertDisabled] = useState<boolean>(true);
+  const [isBtnDisabled, setBtnDisabled] = useState<boolean>(false);
   const [status, setStatus] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
   const router = useRouter();
 
   const getValidity = async () => {
-    const regex = /[^\d]/g;
+    const regex: RegExp = /[^\d]/g;
     await validationSchema
       .validate({
         phone: form.phone.replaceAll(regex, ""),
@@ -56,11 +58,21 @@ const OperatorForm = (props: IFormProps) => {
       .then(() => {
         if (Math.random() > 0.5) {
           setStatus("success");
+          setMessage(
+            "Успешно! Через 1 секунду вы будете перенаправлены на главную страницу"
+          );
+          setBtnDisabled(true);
           setTimeout(() => router.push("/"), 1000);
-        } else setStatus("failed");
+        } else {
+          setStatus("failed");
+          setMessage("Ошибка! Что-то пошло не так...");
+        }
       })
-      .catch(() => setStatus("failed"))
-      .finally(() => setIsDisabled(false));
+      .catch(() => {
+        setStatus("failed");
+        setMessage("Ошибка! Данные указаны неверно!");
+      })
+      .finally(() => setAlertDisabled(false));
   };
   const doFormChange = (e: React.ChangeEvent<HTMLFormElement>) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -85,8 +97,10 @@ const OperatorForm = (props: IFormProps) => {
         mask="9999 RU"
         placeholder="Введите сумму от 1 до 1000 рублей"
       />
-      <Button type="submit">Отправить</Button>
-      <Alert disabled={isDisabled} status={status} />
+      <Button type="submit" disabled={isBtnDisabled}>
+        Отправить
+      </Button>
+      <Alert disabled={isAlertDisabled} status={status} text={message} />
     </Form>
   );
 };

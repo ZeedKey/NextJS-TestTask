@@ -14,7 +14,8 @@ const Form = styled.form`
   width: 25rem;
   height: 20rem;
   box-shadow: 4px 4px 8px 3px rgba(34, 60, 80, 0.2);
-  h2,h5 {
+  h2,
+  h5 {
     margin: 1rem;
     font-weight: 400;
   }
@@ -46,10 +47,11 @@ const OperatorForm = (props: IFormProps) => {
   const router = useRouter();
 
   const getValidity = async () => {
+    const regex = /[^\d]/g;
     await validationSchema
       .validate({
-        phone: form.phone.replaceAll(/[^\d]/g, ""),
-        money: Number(form.money.replaceAll(/[^\d]/g, "")),
+        phone: form.phone.replaceAll(regex, ""),
+        money: Number(form.money.replaceAll(regex, "")),
       })
       .then(() => {
         if (Math.random() > 0.5) {
@@ -89,4 +91,4 @@ const OperatorForm = (props: IFormProps) => {
   );
 };
 
-export default OperatorForm;
+export { OperatorForm };

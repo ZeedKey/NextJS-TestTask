@@ -4,4 +4,4 @@ const operators = [
   { name: "MEGAFON", icon: "/megafon.svg" },
 ];
 
-export default operators;
+export { operators };

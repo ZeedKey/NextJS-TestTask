@@ -19,11 +19,12 @@ interface IProps {
   type?: "number" | "text";
 }
 
-export default function Input(props: IProps) {
-  const mask = props.mask == undefined ? "" : props.mask;
+function Input(props: IProps) {
+  const mask = props.mask === undefined ? "" : props.mask;
   return (
     <InputMask
       mask={mask}
+      maskPlaceholder=" "
       value={props.value}
       type={props.type}
       onChange={props.onChange}
@@ -48,3 +49,5 @@ export default function Input(props: IProps) {
     </InputMask>
   );
 }
+
+export { Input };

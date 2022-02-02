@@ -1,11 +1,12 @@
-import styled from "styled-components";
 import { Button as MuiButton } from "@mui/material";
 
 interface ICustomButtonProps {
   type: "button" | "submit" | "reset";
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   children: React.ReactNode;
+  disabled?: boolean;
 }
+
 function Button(props: ICustomButtonProps) {
   return (
     <MuiButton
@@ -14,10 +15,11 @@ function Button(props: ICustomButtonProps) {
       variant="contained"
       onClick={props.onClick}
       type={props.type}
+      disabled={props.disabled}
     >
       {props.children}
     </MuiButton>
   );
 }
 
-export default Button;
+export { Button };

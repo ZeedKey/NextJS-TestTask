@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Image from "next/image";
-import Button from "../customs/Button";
 import Link from "next/link";
+import { Button } from "..";
 
 const Card = styled.div`
   text-align: center;
@@ -26,7 +26,12 @@ function OperatorCard(props: IOperatorProps) {
   return (
     <Card>
       <Name>{props.name}</Name>
-      <Image src={props.icon} width={50} height={50} alt={"operator_image_" + props.name}/>
+      <Image
+        src={props.icon}
+        width={50}
+        height={50}
+        alt={"operator_image_" + props.name}
+      />
 
       <Link href={"/operator/" + props.name}>
         <Button type="button">Выбрать</Button>
@@ -35,4 +40,4 @@ function OperatorCard(props: IOperatorProps) {
   );
 }
 
-export default OperatorCard;
+export { OperatorCard };

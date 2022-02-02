@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Footer from "./Footer";
+import { Footer } from "..";
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -18,4 +18,4 @@ function MainLayout({ children }: JSX.ElementChildrenAttribute) {
   );
 }
 
-export default MainLayout;
+export {MainLayout};

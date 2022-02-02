@@ -23,19 +23,33 @@ const OptionalBlock = styled.form`
 `;
 const Home: NextPage = () => {
   const [opName, setOpName] = useState<string>("");
+  const [isDisabled, setDisabled] = useState<boolean>(true);
+
   const router = useRouter();
-  const doChangeOpName = (e: React.ChangeEvent<HTMLInputElement>) =>setOpName(e.target.value);
-  const doSubmit = (e: React.FormEvent) =>{
+  const doChangeOpName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setOpName(e.target.value);
+    e.target.value.trim().length > 0 && !e.target.value.trim().match(/[\W]/gm)
+      ? setDisabled(false)
+      : setDisabled(true);
+  };
+
+  const doSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    router.push("/operator/"+opName);
-  }
+    router.push("/operator/" + opName);
+  };
 
   return (
     <MainLayout>
       <OperatorsBlock>
-        {operators.map((operator) => (
-          <Card key={operator.name} name={operator.name} icon={operator.icon} />
-        ))}
+        {operators.map(
+          (operator): JSX.Element => (
+            <Card
+              key={operator.name}
+              name={operator.name}
+              icon={operator.icon}
+            />
+          )
+        )}
       </OperatorsBlock>
       <OptionalBlock onSubmit={doSubmit}>
         <Input
@@ -43,7 +57,9 @@ const Home: NextPage = () => {
           onChange={doChangeOpName}
           placeholder="Введите имя своего оператора"
         />
-          <Button type="submit">Выбрать</Button>
+        <Button type="submit" disabled={isDisabled}>
+          Выбрать
+        </Button>
       </OptionalBlock>
     </MainLayout>
   );

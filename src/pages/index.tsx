@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
+
 import styled from "styled-components";
 import {
   OperatorCard as Card,
@@ -21,9 +22,13 @@ const OptionalBlock = styled.form`
   flex-direction: column;
 `;
 const Home: NextPage = () => {
-  const [opName, setOpName] = useState("");
-  const doChangeOpName = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setOpName(e.target.value);
+  const [opName, setOpName] = useState<string>("");
+  const router = useRouter();
+  const doChangeOpName = (e: React.ChangeEvent<HTMLInputElement>) =>setOpName(e.target.value);
+  const doSubmit = (e: React.FormEvent) =>{
+    e.preventDefault();
+    router.push("/operator/"+opName);
+  }
 
   return (
     <MainLayout>
@@ -32,15 +37,13 @@ const Home: NextPage = () => {
           <Card key={operator.name} name={operator.name} icon={operator.icon} />
         ))}
       </OperatorsBlock>
-      <OptionalBlock>
+      <OptionalBlock onSubmit={doSubmit}>
         <Input
           name="optionalOpName"
           onChange={doChangeOpName}
           placeholder="Введите имя своего оператора"
         />
-        <Link href={"/operator/" + opName}>
-          <Button type="button">Выбрать</Button>
-        </Link>
+          <Button type="submit">Выбрать</Button>
       </OptionalBlock>
     </MainLayout>
   );

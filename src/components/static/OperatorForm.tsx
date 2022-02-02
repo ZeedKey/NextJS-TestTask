@@ -48,8 +48,8 @@ const OperatorForm = (props: IFormProps) => {
   const getValidity = async () => {
     await validationSchema
       .validate({
-        phone: form.phone.replace(/[^\d]/g, ""),
-        money: Number(form.money.replace(/[^\d]/g, "")),
+        phone: form.phone.replaceAll(/[^\d]/g, ""),
+        money: Number(form.money.replaceAll(/[^\d]/g, "")),
       })
       .then(() => {
         if (Math.random() > 0.5) {

@@ -1,20 +1,16 @@
-import { useRouter } from 'next/router'
-import operators from '../../components/operator/OperatorStorage'
-import OperatorForm from '../../components/operator/OperatorForm'
-import Footer from '../../components/Footer'
+import { useRouter } from "next/router";
+import { NextPage } from "next";
+import { OperatorForm, MainLayout } from "../../components";
 
-const Payment = () => {
-    const router = useRouter();
+const Payment: NextPage = () => {
+  const router = useRouter();
+  const id = router.query.id + "";
 
-    const id = Number(router.query.id);
-    const opName = operators[id-1].op_name;
+  return (
+    <MainLayout>
+      <OperatorForm name={id} />
+    </MainLayout>
+  );
+};
 
-    return (
-        <>
-            <OperatorForm opName={opName}/>
-            <Footer/>
-        </>
-    )
-}
-
-export default Payment
+export default Payment;

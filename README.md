@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Demo
 
-[Click me to visit demo web-site!](https://next-js-test-task-ni2e1x7bf-zeedkey.vercel.app/)
+[Click me to visit demo web-site!](https://next-js-test-task-qx4sxznl3-zeedkey.vercel.app/)
 
 ## Getting Started
 
